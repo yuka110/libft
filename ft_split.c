@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/02 09:51:36 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/04 14:54:29 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/04 19:39:51 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,37 +48,32 @@ int	get_strlen(char const *s, char c)
 	return (j);
 }
 
-char	**ft_split(char const *s, char c)
+void	freearray(char **arr, int row)
 {
-	int		strnum;
-	int		count;
+	while (row >= 0)
+	{
+		--row;
+		free(arr[row]);
+	}
+	free(arr);
+}
+
+char	**loop(char const *s, char c, int i, char **arr)
+{
 	int		row;
-	int		i;
 	int		skip;
-	char	**arr;
+	int		count;
 
 	row = 0;
-	count = 0;
 	skip = 0;
-	i = 0;
-	strnum = howmanystr(s, c);
-	arr = ft_calloc(strnum + 1, sizeof(char *));
-	if (!arr)
-		return (NULL);
-	while (s[i] == c)
-		++i;
-	while (row < strnum)
+	count = 0;
+	while (row < howmanystr(s, c))
 	{
 		count = get_strlen(s + i + skip, c);
 		arr[row] = ft_substr(s, i + skip, count);
 		if (!arr[row])
 		{
-			while (row >= 0)
-			{
-				--row;
-				free(arr[row]);
-			}
-			free(arr);
+			freearray(arr, row);
 			return (NULL);
 		}
 		++row;
@@ -89,6 +84,23 @@ char	**ft_split(char const *s, char c)
 			++count;
 		}
 	}
+	return (arr);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		i;
+	char	**arr;
+
+	i = 0;
+	arr = ft_calloc(howmanystr(s, c) + 1, sizeof(char *));
+	if (!arr)
+		return (NULL);
+	while (s[i] == c)
+		++i;
+	arr = loop(s, c, i, arr);
+	if (arr == NULL)
+		return (NULL);
 	return (arr);
 }
 

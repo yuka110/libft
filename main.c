@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/07 15:47:37 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/04 18:30:37 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/04 19:27:07 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,8 @@ int main(void)
 	printf("itoa\n %s\n", charnum);
 	free (charnum);
 
-	const char	*spliting = "hello!";
-	char	**splited = ft_split(spliting, ' ');
+	const char	*spliting = "hello!there";
+	char	**splited = ft_split(spliting, '!');
 	int	index = 0;
 	if (splited == NULL)
 		printf("NULL\n");
