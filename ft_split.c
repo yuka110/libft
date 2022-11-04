@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/02 09:51:36 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/04 14:22:07 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/04 14:54:29 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	howmanystr(char const *s, char c)
 
 int	get_strlen(char const *s, char c)
 {
-	//printf("pointer is located at %s\n", s);
 	int	i;
 	int	j;
 
@@ -63,8 +62,6 @@ char	**ft_split(char const *s, char c)
 	skip = 0;
 	i = 0;
 	strnum = howmanystr(s, c);
-	//printf("test: %s\n", s);
-	//printf("we need %d str\n", strnum);
 	arr = ft_calloc(strnum + 1, sizeof(char *));
 	if (!arr)
 		return (NULL);
@@ -73,8 +70,6 @@ char	**ft_split(char const *s, char c)
 	while (row < strnum)
 	{
 		count = get_strlen(s + i + skip, c);
-		//printf("we need %d words in str[%d]\n", count, row);
-		
 		arr[row] = ft_substr(s, i + skip, count);
 		if (!arr[row])
 		{
@@ -86,8 +81,6 @@ char	**ft_split(char const *s, char c)
 			free(arr);
 			return (NULL);
 		}
-		//printf("i = %d, skip = %d\n", i, skip);
-		//printf("array = %s, current index = %d\n", arr[row], i + skip);
 		++row;
 		i = i + count + 1;
 		while (s[i + skip] == c)

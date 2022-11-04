@@ -6,42 +6,48 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/07 16:28:57 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/10/24 17:19:36 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/04 16:52:51 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int		i;
+	int			i;
+	int			j;
 	char		*arr1;
 	const char	*arr2;
 
 	i = 0;
+	j = i;
 	arr1 = (char *)dst;
 	arr2 = (const char *)src;
+	if (arr1 == 0 && arr2 == 0)
+		return (NULL);
 	if (dst > src)
 	{
-		i = n - 1;
-		while (i >= 0)
-		{
-			arr1[i] = arr2[i];
-			--i;
-		}
+		i = len - 1;
+		j = i;
+		while (i >= 0 && j >= 0)
+			arr1[i--] = arr2[j--];
 	}
 	else
 	{
-		while (i < (int) n)
-		{
-			arr1[i] = arr2[i];
-			++i;
-		}
+		while (i < (int) len && j < (int) len)
+			arr1[i++] = arr2[j++];
 	}
 	return (dst);
 }
 
 /*
+DESCRIPTION
+     The memmove() function copies len bytes from string src 
+	 to string dst.  The two strings may overlap; the
+     copy is always done in a non-destructive manner.
+
+RETURN VALUES
+     The memmove() function returns the original value of dst.
 
 we need happy ending
       s d

@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 20:43:45 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/04 13:16:43 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/04 17:41:21 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		return (NULL);
 	else
 	{
-		while (i + ii < len - 1 && haystack[i + ii] != '\0'
+		while (i + ii < len && haystack[i + ii] != '\0'
 			&& needle[ii] != '\0')
 		{
 			ii = 0;
-			while (haystack[i + ii] == needle[ii] && i + ii < len - 1)
+			while (haystack[i + ii] == needle[ii] && i + ii < len)
 			{
 				++ii;
 				if (needle[ii] == '\0')
@@ -42,6 +42,12 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 }
 
 /*
+
+hello
+012345
+  01
+ll
+012
 DESCRIPTION
 The strnstr() function locates the first occurrence of 
 the null-terminated string needle in the string

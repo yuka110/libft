@@ -6,17 +6,66 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/29 11:59:12 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/10/29 12:04:34 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/04 18:39:45 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
 
+int	digitcounter(long int n)
+{
+	long int	copy;
+	int			digit;
+
+	copy = n;
+	digit = 0;
+	if (copy == 0)
+		++digit;
+	if (copy < 0)
+		copy = copy * -1;
+	while (copy > 0)
+	{
+		copy = copy / 10;
+		++digit;
+	}
+	return (digit);
+}
+
+int	exponential(int base, long int exponent)
+{
+	long int	i;
+	int			result;
+
+	i = 0;
+	result = 1;
+	while (i < exponent)
+	{
+		result = result * base;
+		++i;
+	}
+	return (result);
+}
+
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*num;
+	long int	nbr;
+	long int	digit;
+	char		char_num;
 
-	num = ft_itoa(n);
-	ft_putstr_fd(num, fd);
+	nbr = (long int) n;
+	digit = digitcounter(nbr) - 1;
+	char_num = '0';
+	if (nbr < 0)
+	{
+		ft_putchar_fd('-', fd);
+		nbr = nbr * -1;
+	}
+	while (digit >= 0 && nbr >= 0)
+	{
+		char_num = (nbr / exponential(10, digit)) + 48;
+		ft_putchar_fd(char_num, fd);
+		nbr = nbr % exponential(10, digit);
+		--digit;
+	}
 }

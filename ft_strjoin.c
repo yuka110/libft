@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/25 12:28:38 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/10/25 16:56:26 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/04 14:52:02 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*arr;
+	char		*arr;
 	size_t		prelen;
 	size_t		suflen;
-	size_t	i;
-	size_t	j;
+	size_t		i;
+	size_t		j;
 
 	prelen = ft_strlen(s1);
 	suflen = ft_strlen(s2);

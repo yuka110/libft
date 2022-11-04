@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/07 15:47:37 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/03 19:28:53 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/04 18:30:37 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include<string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include<fcntl.h>
 #include "libft.h"
 
 int main(void)
@@ -29,7 +30,7 @@ int main(void)
 	//ft_to* & atoi
 	char	a = 'A';
 	char	b = 'b';
-	const char cool[50] = "-99999999999999999";
+	const char cool[50] = "-53";
 	const char	hot[50] = "  -128987";
 
 	printf("toupper\n %d, %d, %d, %d\n", ft_toupper(a), toupper(a), ft_toupper(b), toupper(b));
@@ -37,8 +38,8 @@ int main(void)
 	printf("atoi\n %d, %d, %d, %d\n", ft_atoi(cool), ft_atoi(hot), atoi(cool), atoi(hot));
 
 	//ft_str*
-	const char str[50] = "hey yollo";
-	const char	str2[50] = "yol";
+	const char str[50] = "hello";
+	const char	str2[50] = "ll";
 	//char	sweet[50] = "abcdef";
 	char	blank[50];
 	char	blank2[50];
@@ -48,8 +49,8 @@ int main(void)
 	printf ("strlen\n %zu, %zu\n", ft_strlen(str), strlen(str));
 	//printf ("strlcat\n %zu, %zu\n", ft_strlcat((void *)0, sunday, 0), strlcat((void *)0, sunday, 0));
 	printf ("strlcpy\n %zu, %s, %zu, %s\n", ft_strlcpy(blank, sunday, 0), blank, strlcpy(blank2, sunday, 0), blank2);
-	printf("strncmp\n %d, %d\n", ft_strncmp(str, str2, 6), strncmp(str, str2, 6));
-	printf("strnstr\n %s, %s\n", ft_strnstr(str, str2, 6), strnstr(str, str2, 6));
+	printf("strncmp\n %d, %d\n", ft_strncmp(str, str2,5), strncmp(str, str2, 5));
+	printf("strnstr\n %s, %s\n", ft_strnstr(str, str, 5), strnstr(str, str, 5));
 	printf("strchr\n %s, %s\n", ft_strchr("abbbbbbb", ch), strchr("abbbbbbb", ch));
 	printf("strrchr\n %s, %s\n", ft_strrchr("abbbbbbb", ch), strrchr("abbbbbbb", ch));
 	
@@ -119,7 +120,7 @@ int main(void)
 	printf("strtrim\n %s\n", trimmed);
 	free (trimmed);
 
-	int	n = -2147483647;
+	int	n = -2358;
 	char	*charnum = ft_itoa(n);
 	
 	if (charnum == NULL)
@@ -140,4 +141,7 @@ int main(void)
 	}
 	free(splited);
 
+	int	fd;
+	fd = open("test", O_WRONLY);
+	ft_putnbr_fd(-2147483648, fd);
 }

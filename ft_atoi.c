@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/07 16:27:49 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/04 14:46:08 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/04 14:56:30 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	skip(const char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] == ' ' || str[i] == '\n' || \
-			str[i] == '\t' || str[i] == '\v' ||\
-			str[i] == '\f' || str[i] == '\r')
+	while (str[i] == ' ' || str[i] == '\n'
+		|| str[i] == '\t' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r')
 		++i;
 	if (str[i] == '0')
 		++i;
