@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/02 09:51:36 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/03 19:46:12 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/04 14:22:07 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	**ft_split(char const *s, char c)
 	strnum = howmanystr(s, c);
 	//printf("test: %s\n", s);
 	//printf("we need %d str\n", strnum);
-	arr = calloc (strnum + 1, sizeof(char *));
+	arr = ft_calloc(strnum + 1, sizeof(char *));
 	if (!arr)
 		return (NULL);
 	while (s[i] == c)

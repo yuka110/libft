@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 11:23:19 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/10/29 09:14:30 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/04 14:21:46 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,16 @@ int	count_digit(int n)
 	digit = 0;
 	if (copy == 0)
 		++digit;
+	if (copy < 0)
+	{
+		++digit;
+		copy = copy * -1;
+	}
 	while (copy > 0)
 	{
 		copy = copy / 10;
 		++digit;
-//printf("digit = %d\n", digit);
 	}
-	//printf("digit is %d\n", digit);
 	return (digit);
 }
 
@@ -36,30 +39,26 @@ char	*ft_itoa(int n)
 {
 	char	*num;
 	int		i;
-	int		sign;
 	int		count;
 
-	sign = 0;
-	if (n < 0)
-	{
-		n = n * -1;
-		sign = 1;
-	}
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n == 0)
+		return (ft_strdup("0"));
 	count = count_digit(n);
-	i = count + sign - 1;
-	num = malloc((count + sign + 1) * sizeof(char));
-	if (num == NULL)
+	i = count - 1;
+	num = ft_calloc((count + 1), sizeof(char));
+	if (!num)
 		return (NULL);
-	while (i >= 0)
+	if (n < 0)
+		n = n * -1;
+	while (i >= 0 && n >= 0)
 	{
 		num[i] = (n % 10) + 48;
-		//printf("num[%d] = %c\n", i, num[i]);
 		--i;
 		n = n / 10;
-		//printf("i = %d, next n = %d\n", i, n);
 	}
-	if (sign == 1)
+	if (num[0] == '0')
 		num[0] = '-';
-	num[count + sign] = '\0';
 	return (num);
 }

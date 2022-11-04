@@ -6,11 +6,29 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/07 16:27:49 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/10/25 10:49:24 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/04 14:46:08 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	skip(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\n' || \
+			str[i] == '\t' || str[i] == '\v' ||\
+			str[i] == '\f' || str[i] == '\r')
+		++i;
+	if (str[i] == '0')
+		++i;
+	if (str[i] == '+')
+		++i;
+	if (str[i] == '-')
+		++i;
+	return (i);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -18,32 +36,22 @@ int	ft_atoi(const char *str)
 	int	num;
 	int	sign;
 
-	i = 0;
+	i = skip(str);
+	if (str[i - 1] == '-' && str[i - 2] == '+')
+		return (0);
 	num = 0;
 	sign = 1;
-	while (str[i] == ' ' || str[i] == '\n' || \
-			str[i] == '\t' || str[i] == '\v' ||\
-			str[i] == '\f' || str[i] == '\r')
-		++i;
-	if (str[i] == '+')
-		++i;
-	else if (str[i] == '-')
-	{
+	if (str[i - 1] == '-')
 		sign = -1;
-		++i;
-	}
-	if (str[i] >= '0' && str[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
 	{
-		while (str[i] != '\0')
+		if (str[i] >= '0' && str[i] <= '9')
 		{
-			if (str[i] >= '0' && str[i] <= '9')
-			{
-				num = 10 * num + (str[i] - 48);
-				++i;
-			}
-			else
-				break ;
+			num = 10 * num + (str[i] - 48);
+			++i;
 		}
+		else
+			break ;
 	}
 	if (num > 2147483647)
 		return (1 * sign);

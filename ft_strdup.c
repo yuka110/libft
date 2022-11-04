@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/24 14:56:06 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/10/24 15:40:16 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/04 14:01:17 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strdup(const char *s1)
 
 	len = ft_strlen(s1) + 1;
 	pt = malloc(len * sizeof(char));
-	if (pt == NULL)
+	if (!pt)
 		return (NULL);
 	ft_memcpy(pt, s1, len);
 	return (pt);
