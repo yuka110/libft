@@ -6,13 +6,12 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/02 09:51:36 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/04 19:39:51 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/05 15:00:40 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
-#include <unistd.h>
 
 int	howmanystr(char const *s, char c)
 {
@@ -99,7 +98,7 @@ char	**ft_split(char const *s, char c)
 	while (s[i] == c)
 		++i;
 	arr = loop(s, c, i, arr);
-	if (arr == NULL)
+	if (!arr)
 		return (NULL);
 	return (arr);
 }
