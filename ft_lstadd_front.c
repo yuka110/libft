@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/05 15:32:15 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/05 16:19:05 by yitoh         ########   odam.nl         */
+/*   Created: 2022/11/07 16:53:26 by yitoh         #+#    #+#                 */
+/*   Updated: 2022/11/07 16:56:57 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	new -> next = &lst;
+	new -> next = *lst;
+	*lst = new;
 }

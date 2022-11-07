@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/05 15:41:46 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/05 15:56:10 by yitoh         ########   odam.nl         */
+/*   Created: 2022/11/07 16:48:47 by yitoh         #+#    #+#                 */
+/*   Updated: 2022/11/07 16:52:16 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
+	if (lst == NULL)
+		return (NULL);
 	while (lst -> next != 0)
 		lst = lst -> next;
 	return (lst);

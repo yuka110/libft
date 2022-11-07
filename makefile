@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
-#    makefile                                           :+:    :+:             #
+#    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
 #    By: yitoh <yitoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/06 14:35:44 by yitoh         #+#    #+#                  #
-#    Updated: 2022/11/04 11:13:41 by yitoh         ########   odam.nl          #
+#    Updated: 2022/11/07 16:47:40 by yitoh         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,31 +18,47 @@ SRC = ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_strlen
 	  ft_memcmp.c ft_memcpy.c ft_memmove.c ft_atoi.c ft_strlcat.c ft_calloc.c \
 	  ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_itoa.c ft_striteri.c\
 	  ft_strmapi.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
-	  ft_split.c
-OBJ = $(SRC:.c=.o)
+	  ft_split.c 
+REGOBJ = $(SRC:.c=.o)
+BONUSSRC = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
+
+BONUSOBJ = $(BONUSSRC:.c=.o)
 CFLAG = -Wall -Wextra -Werror #-fsanitize=address -g
 NAME = libft.a
+
+ifdef WITH_BONUS
+OBJ = $(REGOBJ) $(BONUSOBJ)
+else
+OBJ = $(REGOBJ)
+endif
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar -crs $@ $^
+	@ar -crs $@ $<
 
-# $(BUILDDIR)/%.o : %.c $(BUILDDIR)/
-# 	$(CC) -c $(CFLAG) -o $@ $<
+%.o: %.c
+	@$(CC) -c $(CFLAG) $< -o $@
 
-# $(BUILDDIR):
-# 	@mkdir $(BUILDDIR)
+#$(BUILDDIR):
+#	@mkdir $(BUILDDIR)
 
 clean:
-	@rm -rf $(OBJ)
+	@rm -rf $(REGOBJ) $(BONUSOBJ)
 
 fclean: clean
 	@rm -f $(NAME) a.out
 
 re: fclean all
 
-.PHONY: clean fclean all test
+bonus: 
+	@$(MAKE) WITH_BONUS=1 all
+	@ar -crs $(NAME) $(BONUSOBJ)
+
+#$(CC) -c $(CFLAG) -o $@ $<
+
+
+.PHONY: clean fclean all bonus test
 
 test: $(NAME)
 	@$(CC) $(CFLAG) $^ main.c -o ./a.out

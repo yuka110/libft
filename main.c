@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/07 15:47:37 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/04 19:27:07 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/07 16:46:24 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include<string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include<fcntl.h>
 #include "libft.h"
 
@@ -144,4 +145,52 @@ int main(void)
 	int	fd;
 	fd = open("test", O_WRONLY);
 	ft_putnbr_fd(-2147483648, fd);
+	close (fd);
+
+
+	t_list	*new;
+	t_list	*new2;
+	t_list	*node1;
+	t_list	*node2;
+	t_list	*node3;
+	
+	int *content1 = malloc(sizeof(int));
+	int *content2 = malloc(sizeof(int));
+	int *content3 = malloc(sizeof(int));
+	int *newcontent = malloc(sizeof(int));
+	int *newcontent2 = malloc(sizeof(int));
+	
+	*content1 = 10;
+	*content2 = 20;
+	*content3 = 30;
+	*newcontent = 1;
+	*newcontent2 = 2;
+
+	node1 = ft_lstnew((void *)content1);
+	node2 = ft_lstnew((void *)content2);
+	node3 = ft_lstnew((void *)content3);
+	new = ft_lstnew((void *)newcontent);
+	new2 = ft_lstnew((void *)newcontent2);
+
+	node1 -> next = node2;
+	node2 -> next = node3;
+	node3 -> next = NULL;
+	ft_lstadd_front(&node1,new);
+
+	printf("%s\n", "linked list");
+	printf("%d\n", ft_lstsize(node1));
+	while (node1 != NULL)
+	{
+		int *link = (int *)(node1->content);
+		printf("%d\n", *link);
+		node1 = node1 -> next;
+	}
+	node1 = new;
+	ft_lstadd_back(&node1, new2);
+	while (node1 != NULL)
+	{
+		int *link = (int *)(node1->content);
+		printf("%d\n", *link);
+		node1 = node1->next;
+	}
 }
