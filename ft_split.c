@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/02 09:51:36 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/05 15:00:40 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/07 20:06:35 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	**loop(char const *s, char c, int i, char **arr)
 	count = 0;
 	while (row < howmanystr(s, c))
 	{
-		count = get_strlen(s + i + skip, c);
+		count = get_strlen(&s[i + skip], c);
 		arr[row] = ft_substr(s, i + skip, count);
 		if (!arr[row])
 		{

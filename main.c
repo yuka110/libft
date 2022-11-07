@@ -6,16 +6,16 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/07 15:47:37 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/07 16:46:24 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/07 19:59:50 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include<fcntl.h>
+#include <fcntl.h>
 #include "libft.h"
 
 int main(void)
@@ -41,6 +41,7 @@ int main(void)
 	//ft_str*
 	const char str[50] = "hello";
 	const char	str2[50] = "ll";
+	const char	str3[50] = "christmas eve";
 	//char	sweet[50] = "abcdef";
 	char	blank[50];
 	char	blank2[50];
@@ -51,7 +52,7 @@ int main(void)
 	//printf ("strlcat\n %zu, %zu\n", ft_strlcat((void *)0, sunday, 0), strlcat((void *)0, sunday, 0));
 	printf ("strlcpy\n %zu, %s, %zu, %s\n", ft_strlcpy(blank, sunday, 0), blank, strlcpy(blank2, sunday, 0), blank2);
 	printf("strncmp\n %d, %d\n", ft_strncmp(str, str2,5), strncmp(str, str2, 5));
-	printf("strnstr\n %s, %s\n", ft_strnstr(str, str, 5), strnstr(str, str, 5));
+	printf("strnstr\n %s, %s\n", ft_strnstr(str3, str3, 5), strnstr(str3, str3, 5));
 	printf("strchr\n %s, %s\n", ft_strchr("abbbbbbb", ch), strchr("abbbbbbb", ch));
 	printf("strrchr\n %s, %s\n", ft_strrchr("abbbbbbb", ch), strrchr("abbbbbbb", ch));
 	
@@ -130,7 +131,7 @@ int main(void)
 	free (charnum);
 
 	const char	*spliting = "hello!there";
-	char	**splited = ft_split(spliting, '!');
+	char	**splited = ft_split(spliting, ' ');
 	int	index = 0;
 	if (splited == NULL)
 		printf("NULL\n");
@@ -193,4 +194,9 @@ int main(void)
 		printf("%d\n", *link);
 		node1 = node1->next;
 	}
+	free (content1);
+	free (content2);
+	free (content3);
+	free (newcontent);
+	free (newcontent2);
 }
