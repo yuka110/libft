@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/07 16:48:28 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/07 18:55:50 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/09 18:42:26 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	node = *lst;
 	if (!new)
 		return ;
-	if (!*lst)
+	if (!lst || !*lst)
 	{
 		*lst = new;
 		return ;

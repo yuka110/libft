@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/02 09:51:36 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/07 20:06:35 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/10 20:11:08 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	**loop(char const *s, char c, int i, char **arr)
 	row = 0;
 	skip = 0;
 	count = 0;
-	while (row < howmanystr(s, c))
+	while (row < howmanystr(s, c) && s != NULL)
 	{
 		count = get_strlen(&s[i + skip], c);
 		arr[row] = ft_substr(s, i + skip, count);
@@ -75,9 +75,9 @@ char	**loop(char const *s, char c, int i, char **arr)
 			freearray(arr, row);
 			return (NULL);
 		}
-		++row;
 		i = i + count + 1;
-		while (s[i + skip] == c)
+		++row;
+		while (i + skip <= (int)ft_strlen(s) && s[i + skip] == c)
 		{
 			++skip;
 			++count;
@@ -106,15 +106,4 @@ char	**ft_split(char const *s, char c)
 /*
 hello///////halo/halo
 012345678901234567890
-
-
-[crash]: you did not protect your split
- Test code:
-        char *s = "      split       this for   me  !       ";
- 
-        char **result = ft_split(s, ' ');
-        if (!result)
-                exit(TEST_SUCCESS);
-        exit(TEST_FAILED);
-
 */

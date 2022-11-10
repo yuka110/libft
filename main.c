@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/07 15:47:37 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/07 19:59:50 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/10 20:52:52 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,24 @@
 #include <fcntl.h>
 #include "libft.h"
 
+// void	frog_check(void)
+// {
+// 	system("leaks a.out");
+// }
+
+void	*ft_myf(void *para)
+{
+	int	*parai = (int *)para;
+	int	i = *parai;
+	char	*itoastr = ft_itoa(i);
+	return(itoastr);
+}
+
+void	del(void *deleted)
+{
+	free (deleted);
+}
+	
 int main(void)
 {
 	//ft_is*
@@ -41,7 +59,8 @@ int main(void)
 	//ft_str*
 	const char str[50] = "hello";
 	const char	str2[50] = "ll";
-	const char	str3[50] = "christmas eve";
+	const char	str3[50] = "aaabcabcd";
+	const char	str4[50] = "a";
 	//char	sweet[50] = "abcdef";
 	char	blank[50];
 	char	blank2[50];
@@ -52,7 +71,7 @@ int main(void)
 	//printf ("strlcat\n %zu, %zu\n", ft_strlcat((void *)0, sunday, 0), strlcat((void *)0, sunday, 0));
 	printf ("strlcpy\n %zu, %s, %zu, %s\n", ft_strlcpy(blank, sunday, 0), blank, strlcpy(blank2, sunday, 0), blank2);
 	printf("strncmp\n %d, %d\n", ft_strncmp(str, str2,5), strncmp(str, str2, 5));
-	printf("strnstr\n %s, %s\n", ft_strnstr(str3, str3, 5), strnstr(str3, str3, 5));
+	printf("strnstr\n %s, %s\n", ft_strnstr(str3, str4, 1), strnstr(str3, str4, 1));
 	printf("strchr\n %s, %s\n", ft_strchr("abbbbbbb", ch), strchr("abbbbbbb", ch));
 	printf("strrchr\n %s, %s\n", ft_strrchr("abbbbbbb", ch), strrchr("abbbbbbb", ch));
 	
@@ -130,7 +149,7 @@ int main(void)
 	printf("itoa\n %s\n", charnum);
 	free (charnum);
 
-	const char	*spliting = "hello!there";
+	const char	*spliting = "hello!  there";
 	char	**splited = ft_split(spliting, ' ');
 	int	index = 0;
 	if (splited == NULL)
@@ -194,9 +213,15 @@ int main(void)
 		printf("%d\n", *link);
 		node1 = node1->next;
 	}
+
+	node1 = new;
+	t_list	*map;
+	map = ft_lstmap(node1, ft_myf, del);
+
 	free (content1);
 	free (content2);
 	free (content3);
 	free (newcontent);
 	free (newcontent2);
+	//atexit(frog_check);
 }

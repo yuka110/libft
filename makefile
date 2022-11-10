@@ -6,7 +6,7 @@
 #    By: yitoh <yitoh@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/06 14:35:44 by yitoh         #+#    #+#                  #
-#    Updated: 2022/11/07 20:18:59 by yitoh         ########   odam.nl          #
+#    Updated: 2022/11/10 20:00:20 by yitoh         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC = ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_strlen
 	  ft_split.c 
 REGOBJ = $(SRC:.c=.o)
 BONUSSRC = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
-			ft_lstdelone.c
+			ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 BONUSOBJ = $(BONUSSRC:.c=.o)
 CFLAG = -Wall -Wextra -Werror #-fsanitize=address -g
 NAME = libft.a
