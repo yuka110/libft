@@ -6,7 +6,7 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 20:43:45 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/10 20:56:44 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/13 14:13:58 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		return (NULL);
 	else
 	{
-		if (ft_strlen(needle) == 1 && len == 1)
-			len = 2;
-		while (i + j < len - 1 && haystack[i + j] != '\0'
-			&& needle[j] != '\0')
+		while (i + j <= len - 1 && haystack[i + j] && needle[j])
 		{
 			j = 0;
 			while (i + j < len && haystack[i + j] == needle[j])
@@ -37,14 +34,15 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 				if (needle[j] == '\0')
 					return ((char *)&haystack[i]);
 			}
-			++i;
+			if (haystack[i + j])
+				++i;
 		}
 		return (NULL);
 	}
 }
 
 /*
-
+hello, a, 1
 hello
 012345
   01

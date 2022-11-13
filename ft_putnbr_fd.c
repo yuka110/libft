@@ -6,14 +6,14 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/29 11:59:12 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/04 18:39:45 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/13 13:13:40 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
 
-int	digitcounter(long int n)
+static int	digitcounter(long int n)
 {
 	long int	copy;
 	int			digit;
@@ -32,7 +32,7 @@ int	digitcounter(long int n)
 	return (digit);
 }
 
-int	exponential(int base, long int exponent)
+static int	exponential(int base, long int exponent)
 {
 	long int	i;
 	int			result;

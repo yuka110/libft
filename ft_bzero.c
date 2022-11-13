@@ -6,13 +6,13 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 17:57:32 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/10/22 14:59:32 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/13 13:21:34 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *dst, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(dst, '\0', n);
+	ft_memset(s, '\0', n);
 }

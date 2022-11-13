@@ -6,14 +6,14 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 11:23:19 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/04 14:54:49 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/13 13:13:01 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-int	count_digit(int n)
+static int	count_digit(int n)
 {
 	int		copy;
 	int		digit;

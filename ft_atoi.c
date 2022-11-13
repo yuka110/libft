@@ -6,13 +6,13 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/07 16:27:49 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/10 20:15:14 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/13 13:12:37 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	skip(const char *str)
+static int	skip(const char *str)
 {
 	int	i;
 

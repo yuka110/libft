@@ -6,14 +6,14 @@
 /*   By: yitoh <yitoh@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/02 09:51:36 by yitoh         #+#    #+#                 */
-/*   Updated: 2022/11/10 20:11:08 by yitoh         ########   odam.nl         */
+/*   Updated: 2022/11/13 13:14:05 by yitoh         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-int	howmanystr(char const *s, char c)
+static int	howmanystr(char const *s, char c)
 {
 	int	str_count;
 	int	i;
@@ -33,7 +33,7 @@ int	howmanystr(char const *s, char c)
 	return (str_count);
 }
 
-int	get_strlen(char const *s, char c)
+static int	get_strlen(char const *s, char c)
 {
 	int	i;
 	int	j;
@@ -47,7 +47,7 @@ int	get_strlen(char const *s, char c)
 	return (j);
 }
 
-void	freearray(char **arr, int row)
+static void	freearray(char **arr, int row)
 {
 	while (row >= 0)
 	{
@@ -57,7 +57,7 @@ void	freearray(char **arr, int row)
 	free(arr);
 }
 
-char	**loop(char const *s, char c, int i, char **arr)
+static char	**loop(char const *s, char c, int i, char **arr)
 {
 	int		row;
 	int		skip;
